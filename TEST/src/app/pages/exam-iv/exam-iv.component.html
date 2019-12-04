@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="card">
+
+    <div class="card-body">
+      <label>รายการปะเภท Certificate</label>
+      <table class="table table-responsive">
+        <thead>
+          <tr>
+            <th>
+              <section>
+                <mat-checkbox [(ngModel)]="checked"></mat-checkbox>
+              </section>
+            </th>
+            <th>#</th>
+            <th>ชื่อประเภท Cert.</th>
+            <th>รายการงาน</th>
+          </tr>
+
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of dataList">
+            <td>
+              <mat-checkbox (ngModel)="checked"></mat-checkbox>
+            </td>
+            <td>{{item?.id}}</td>
+            <td>{{item?.certificateNameType}}</td>
+            <td>
+          <tr>
+
+            <mat-chip-list *ngFor="let items of item.workList">
+              <mat-chip>{{items?.name}}</mat-chip>
+            </mat-chip-list>
+
+          </tr>
+
+          </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>

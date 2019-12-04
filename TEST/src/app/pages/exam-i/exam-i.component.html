@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4 text-right mt-4 p-0">ชื่อโครงการ : </div>
+        <div class="col-md-4">
+
+          <mat-form-field style="width:200px;">
+            <mat-select [(ngModel)]="projectDefaultDRP.id" [ngModelOptions]="{ standalone: true }">
+              <mat-option *ngFor="let item of projectDRP" [(value)]="item.id">
+                {{item?.projectName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+  </div>
+
+</div>

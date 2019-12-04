@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+
+        <div class="col-md-1 text-right">ราคา</div>
+        <div class="col-md-1 ">
+          <input class="text-center" [(ngModel)]="data.price" [ngModelOptions]="{standalone: true}" ngDefaultControl
+            type="text" style="width: 50px;">
+        </div>
+        <div class="col-md-1">บาท</div>
+
+        <div class="col-md-2 text-right">รับส่วนลด</div>
+        <div class="col-md-1">
+          <input class="text-center" [(ngModel)]="data.discount" [ngModelOptions]="{standalone: true}" ngDefaultControl
+            type="text" style="width: 50px;">
+        </div>
+
+        <div class="col-md-1">บาท</div>
+        <div class="col-md-2 text-right">ราคาหลังหักส่วนลด</div>
+        <div class="col-md-1">
+          <p class="text-center" [(ngModel)]="data.discountPrice" [ngModelOptions]="{standalone: true}"
+            ngDefaultControl>
+            {{ data.price - data.discount }}</p>
+        </div>
+        <div class="col-md-1">บาท</div>
+      </div>
+    </div>
+  </div>
+</div>

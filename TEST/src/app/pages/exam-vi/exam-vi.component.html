@@ -1,0 +1,160 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+
+      <div class="row">
+        <div class="col-md-3 mb-2 mt-4 text-right">
+          ชื่อกลุ่มงาน :
+        </div>
+        <div class="col-md-3 mb-2">
+          <mat-form-field>
+            <mat-select [(ngModel)]="data.jobGroupName">
+              <mat-option [value]="">
+              </mat-option>
+              <mat-option *ngFor="let item of jobGroupNameDRP" [value]="item.id">
+                {{item?.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3 mb-2 mt-4 text-right">
+          รหัสงาน :
+        </div>
+        <div class="col-md-3 mb-2 mt-4">
+          <input [(ngModel)]="data.code" type="text">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3 mb-2  text-right">
+          รหัสงบประมาณ :
+        </div>
+        <div class="col-md-3 mb-2">
+          <input [(ngModel)]="data.budgetCode" type="text">
+        </div>
+        <div class="col-md-3 mb-2 text-right">
+          ชื่องาน :
+        </div>
+        <div class="col-md-3 mb-2">
+          <input [(ngModel)]="data.jobName" type="text">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3 mb-2 mt-4 text-right">
+          รายละเอียด :
+        </div>
+        <div class="col-md-3 mb-2 ">
+          <mat-form-field>
+            <textarea matInput [(ngModel)]="data.detail"></textarea>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3 mb-2 mt-4 text-right">
+          สถานะการใช้งาน :
+        </div>
+        <div class="col-md-3 mb-2 mt-4">
+          <mat-slide-toggle [(ngModel)]="data.active">
+
+          </mat-slide-toggle>
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col-md-3 mb-2 mt-4 text-right">
+          วันที่เริ่ม :
+        </div>
+        <div class="col-md-3">
+          <mat-form-field>
+            <input matInput [matDatepicker]="pickerStartDate" [(ngModel)]="data.startDate"
+              [value]="data.startDate.value">
+            <mat-datepicker-toggle matSuffix [for]="pickerStartDate"></mat-datepicker-toggle>
+            <mat-datepicker #pickerStartDate></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3 mb-2 mt-4 text-right">
+          วันที่สิ้นสุด :
+        </div>
+        <div class="col-md-3">
+          <mat-form-field>
+            <input matInput [matDatepicker]="pickerEndDate" [(ngModel)]="data.endDate">
+            <mat-datepicker-toggle matSuffix [for]="pickerEndDate"></mat-datepicker-toggle>
+            <mat-datepicker #pickerEndDate></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col-md-3"></div>
+        <div class="col-md-2 text-right pr-0">แบบงาน : </div>
+        <div class="col-md-2 text-left">
+          <i class="fa fa-plus-square text-primary" type="button" (click)="open(content)"></i></div>
+        <div class="col-md-5"></div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-5"></div>
+        <div class="col-md-3">
+          <table class="table table-responsive table-sm">
+            <thead>
+              <tr>
+                <th>แบบงาน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of data.jobStyleList">
+                <td>
+                  {{item?.name}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-primary mr-2" (click)="onSubmit(data)">บันทึก</button>
+            <button type="button" class="btn btn-danger">ยกเลิก</button>
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+<!-- modal-jobStyleList -->
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">เพิ่มแบบงาน</h4>
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <div class="row mb-3">
+      <div class="col-md-3 mt-3 text-right">
+        ชื่อแบบงาน :
+      </div>
+      <div class="col-md-9 mt-3 text-left">
+        <input [(ngModel)]="data.jobStyleList.name" type="text">
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <button type="button" class="btn btn-primary mr-2"
+        (click)="onAddJobStyleList(data.jobStyleList.name)">บันทึก</button>
+      <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">ยกเลิก</button>
+    </div>
+  </div>
+
+</ng-template>

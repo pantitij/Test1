@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+
+
+      <div class="row mb-2 mt-2">
+        <div class="col-md-1"></div>
+        <div class="col-md-4 text-right">ชื่อ :</div>
+        <div class="col-md-7 p-0">
+          <input type="text" [(ngModel)]="userData.name" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col-md-1"></div>
+        <div class="col-md-4 text-right">นามสกุล :</div>
+        <div class="col-md-7 p-0">
+          <input type="text" [(ngModel)]="userData.surename" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-1"></div>
+        <div class="col-md-4 text-right">ที่อยู่ :</div>
+        <div class="col-md-7 p-0">
+          <input type="text" [(ngModel)]="userData.address" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div *ngIf="!isActive" [ngStyle]="{'background-color': color}" class="col-md-12 text-center text-white">
+          {{warnMessage}}
+        </div>
+      </div>
+
+      <div class="row mb-1 justify-content-center">
+        <button class="btn btn-outline-primary btn-sm" (click)="saveUserData(userData)">บันทึก</button>
+      </div>
+
+
+    </div>
+  </div>
+</div>
